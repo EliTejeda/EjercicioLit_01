@@ -31,7 +31,7 @@ export class MyCard extends LitElement {
         <div class= "cardContainer">
                 <slot name="slot1">Saludos</slot>
                 <slot name="slot2">Bye</slot>
-                <slot name="slot2">Bye</slot>
+                
             </div>
        
         `;
