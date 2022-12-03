@@ -1,3 +1,4 @@
+//componente padre
 import { LitElement, html, css } from 'lit';
 import './components/get-data';
 
@@ -53,16 +54,16 @@ export class Rickandmortyapi extends LitElement {
         super();
         this.wiki = [];
 
-        this.addEventListener('ApiData', (e) => {
+        this.addEventListener('ApiData', (e) => {//recibimos data del hijo
             console.log(e.detail.data)
-            this._dataFormat(e.detail.data);
+            this._dataFormat(e.detail.data);// dar forma a la data
         })
     }
     firstUpdated() { //cuando nuestro componente este inicializado y propiedades cargadas se llama a este metodo
         this.characters; //
    }
 
-    _dataFormat(data) { //array de mis personajes
+    _dataFormat(data) { //array de mis personajes/ dale forma a la data
         
         console.log(data["results"])
         data["results"].forEach((character)=>{

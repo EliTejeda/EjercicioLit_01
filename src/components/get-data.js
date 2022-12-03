@@ -1,4 +1,4 @@
-//1.este componente pedira satos a la API y una vez que los traiga los tiene que devolver a nuestro componente padre
+//1.este componente hijo pedira datos a la API y una vez que los traiga los tiene que devolver a nuestro componente padre
 import { LitElement }from 'lit';
 
 export class GetData extends LitElement {
@@ -12,7 +12,7 @@ export class GetData extends LitElement {
     }
  //hacer uso del ciclo de vida de los componentes, usando metodo firstUpdated
    firstUpdated() { //cuando nuestro componente este inicializado y propiedades cargadas se llama a este metodo
-        this.getData(); //se lamza el evento _sendData
+        this.getData(); //se lanza el evento _sendData
    }
  
  
@@ -27,7 +27,7 @@ export class GetData extends LitElement {
     _sendData(data) { //aqui se recibe los datos de la consulta
         this.dispatchEvent(new CustomEvent('ApiData' , { //definiendo nuestro propio evento customEvent
             detail: { data }, bubbles: true, composed: true //valores para que el evento suba de hijos a padres
-
+//customEvent tampolin que envia la data al padre//detail almacena la data
         }));
 
     }
@@ -38,7 +38,7 @@ fetch('https://rickandmortyapi.com/api/character')
 // Exito
 .then(response => response.json())  // convertir a json
 //.then(json => console.log(json)) 
-.then((data) => { this._sendData(data);  }) //imprimir los datos en la consola
+.then((data) => { this._sendData(data);  }) //cuando recibe la data, envias a dispatchevent/imprimir los datos en la consola
 .catch(err => console.log('Solicitud fallida', err)); // Capturar errores
 }
 /*getData(){
